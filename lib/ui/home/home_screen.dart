@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
 import 'package:news_app/ui/home/drawer/home_drawer.dart';
+import 'package:news_app/ui/home/search/search_screen.dart';
 import 'package:news_app/utils/app_colors.dart';
 import 'category/category_details.dart';
 import 'category/category_fragment.dart';
@@ -20,7 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(selectedCategory?.title ?? 'Home'),
         actions: [
-          Icon(Icons.search),
+          IconButton(
+              onPressed: (){
+                Navigator.pushReplacementNamed(context, SearchScreen.routeName);
+              }, icon: Icon(Icons.search,
+          size: 30,)),
           SizedBox(width: width * 0.03,)
         ],
       ),
