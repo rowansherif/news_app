@@ -18,10 +18,15 @@ class AppTheme {
         actionsIconTheme: IconThemeData(color: AppColors.blackColor, size: 30),
         centerTitle: true,
       ),
+      bottomSheetTheme: BottomSheetThemeData(
+        modalBackgroundColor: AppColors.transparentColor,
+      ),
       textTheme: TextTheme(
         labelLarge: AppStyles.bold16Black,
         labelMedium: AppStyles.medium14Black,
         headlineMedium: AppStyles.medium24Black,
+        titleMedium: AppStyles.medium20Black,
+        displayMedium: AppStyles.medium16White,
       ),
       tabBarTheme: TabBarTheme(
         indicatorColor: AppColors.blackColor,
@@ -41,10 +46,14 @@ class AppTheme {
         centerTitle: true,
         actionsIconTheme: IconThemeData(color: AppColors.whiteColor, size: 30),
       ),
+    bottomSheetTheme: BottomSheetThemeData(
+      modalBackgroundColor: AppColors.transparentColor,
+    ),
       textTheme: TextTheme(
         labelLarge: AppStyles.bold16White,
         labelMedium: AppStyles.medium14White,
         headlineMedium: AppStyles.medium24White,
+        displayMedium: AppStyles.medium16Black,
       ),
       tabBarTheme: TabBarTheme(
         indicatorColor: AppColors.whiteColor,

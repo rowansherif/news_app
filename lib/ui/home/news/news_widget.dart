@@ -33,7 +33,8 @@ class _NewsWidgetState extends State<NewsWidget> {
             return Center(
               child: Column(
                 children: [
-                  Text('Something went wrong'),
+                  Text('Something went wrong',
+                  style: Theme.of(context).textTheme.headlineMedium,),
                   ElevatedButton(
                       onPressed: (){
                         ApiManager.getNewsBySourceId(widget.source.id ?? '');
