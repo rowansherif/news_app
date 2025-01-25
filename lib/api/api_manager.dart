@@ -37,4 +37,20 @@ class ApiManager {
     }
   }
 
+  static Future<NewsResponse?> getNewsByQuery(String query) async {
+    Uri url = Uri.https(ApiConstants.serverName, EndPoints.newsApi, {
+      'apiKey': ApiConstants.apiKey,
+      // we need the query parameter 'sources' As we need to show the news which belong to specific source
+      'q': Uri.encodeQueryComponent(query)
+    });
+    try {
+      var response = await http.get(url);
+      var responseBody = response.body;
+      var json = jsonDecode(responseBody);
+      return NewsResponse.fromJson(json);
+    } catch (e) {
+      throw e;
+    }
+  }
+
 }

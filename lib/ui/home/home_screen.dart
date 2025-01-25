@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
               onPressed: (){
-                Navigator.pushReplacementNamed(context, SearchScreen.routeName);
+                Navigator.pushNamed(context, SearchScreen.routeName);
               }, icon: Icon(Icons.search,
           size: 30,)),
           SizedBox(width: width * 0.03,)
