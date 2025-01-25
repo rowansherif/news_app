@@ -15,7 +15,6 @@ class SearchResultWidget extends StatefulWidget {
 }
 
 class _SearchResultWidgetState extends State<SearchResultWidget> {
-  @override
 
   @override
   Widget build(BuildContext context) {
