@@ -21,12 +21,13 @@ class ApiManager {
     }
   }
 
-  static Future<NewsResponse?> getNewsBySourceId(String sourceId, /*int pageNum*/) async {
+  static Future<NewsResponse?> getNewsBySourceId(String sourceId, int pageNum, int pageSize) async {
     Uri url = Uri.https(ApiConstants.serverName, EndPoints.newsApi, {
       'apiKey': ApiConstants.apiKey,
       // we need the query parameter 'sources' As we need to show the news which belong to specific source
       'sources': sourceId,
-      //'page' : pageNum
+      'page' : pageNum.toString(),
+      'pageSize' : pageSize.toString()
     });
     try {
       var response = await http.get(url);
@@ -38,12 +39,13 @@ class ApiManager {
     }
   }
 
-  static Future<NewsResponse?> getNewsByQuery(String query, /*int pageNum*/) async {
+  static Future<NewsResponse?> getNewsByQuery(String query) async {
     Uri url = Uri.https(ApiConstants.serverName, EndPoints.newsApi, {
       'apiKey': ApiConstants.apiKey,
       // we need the query parameter 'sources' As we need to show the news which belong to specific source
       'q': Uri.encodeQueryComponent(query),
-      //'page' : pageNum
+      // 'page' : pageNum,
+      // 'pageSize' : pageSize
     });
     try {
       var response = await http.get(url);
