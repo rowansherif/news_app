@@ -21,7 +21,7 @@ class ApiManager {
     }
   }
 
-  static Future<NewsResponse?> getNewsBySourceId(String sourceId, int pageNum, int pageSize) async {
+  static Future<NewsResponse?> getNewsBySourceId(String sourceId,  int pageNum, int pageSize) async {
     Uri url = Uri.https(ApiConstants.serverName, EndPoints.newsApi, {
       'apiKey': ApiConstants.apiKey,
       // we need the query parameter 'sources' As we need to show the news which belong to specific source

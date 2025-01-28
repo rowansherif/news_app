@@ -25,12 +25,12 @@ class _NewsWidgetState extends State<NewsWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    ApiManager.getNewsBySourceId(widget.source.id ?? '', currentPage, pageSize );
     scrollController.addListener((){
       if(scrollController.position.maxScrollExtent == scrollController.offset){
-        ApiManager.getNewsBySourceId(widget.source.id ?? '', currentPage, pageSize );
         currentPage ++;
+        ApiManager.getNewsBySourceId(widget.source.id ?? '', currentPage, pageSize );
         setState(() {
+
         });
       }
     });
@@ -102,6 +102,7 @@ class _NewsWidgetState extends State<NewsWidget> {
               itemBuilder: (context, index){
               if(index < newsList.length){
                 return NewsItem(news: newsList[index]);
+
               }else if(index == newsList.length+1){
                 return Text('No more to load');
               }
@@ -111,7 +112,6 @@ class _NewsWidgetState extends State<NewsWidget> {
                   child: Center(child: CircularProgressIndicator(color: AppColors.greyColor,)),
                 );
               }
-
               });
         });
   }
