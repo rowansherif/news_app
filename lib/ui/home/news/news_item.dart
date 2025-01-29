@@ -67,9 +67,8 @@ class NewsItem extends StatelessWidget {
                   child: Text('By: ${news.author ?? ''}',
                   style: AppStyles.medium12Grey,),
                 ),
-                Text( timeago.format(DateTime.parse(news.publishedAt ?? '')
+                Text( timeago.format(DateTime.parse(news.publishedAt ?? '')) ,
                   //GetTimeAgo.parse(DateTime.parse(news.publishedAt ?? '')
-                  ) ,
                 style: AppStyles.medium12Grey,)
               ],
             )

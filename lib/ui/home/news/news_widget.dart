@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/api/api_manager.dart';
-import 'package:news_app/models/NewsResponse.dart';
+import 'package:news_app/di/di.dart';
 import 'package:news_app/models/SourceResponse.dart';
 import 'package:news_app/ui/home/news/cubit/news_states.dart';
 import 'package:news_app/ui/home/news/cubit/news_view_model.dart';
@@ -18,19 +17,20 @@ class NewsWidget extends StatefulWidget {
 }
 
 class _NewsWidgetState extends State<NewsWidget> {
-  NewsViewModel viewModel = NewsViewModel();
+  NewsViewModel viewModel = NewsViewModel(newsRepository: injectNewsRepository());
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     viewModel.getNewsBySourceId(widget.source.id!);
   }
-  @override
-  void didUpdateWidget(NewsWidget oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-    viewModel.getNewsBySourceId(widget.source.id!);
-  }
+  // @override
+  // void didUpdateWidget(NewsWidget oldWidget) {
+  //   // TODO: implement didUpdateWidget
+  //   super.didUpdateWidget(oldWidget);
+  //   viewModel.getNewsBySourceId(widget.source.id!);
+  // }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NewsViewModel, NewsState>(
