@@ -6,7 +6,7 @@ import 'package:news_app/models/NewsResponse.dart';
 import 'package:news_app/models/SourceResponse.dart';
 
 class ApiManager {
-  Future<SourceResponse?> getSources(String categoryId) async {
+  static Future<SourceResponse?> getSources(String categoryId) async {
     //The code put in try catch because I might have no response if problem happened to me (like: no internet connection)
     Uri url = Uri.https(ApiConstants.serverName, EndPoints.sourcesApi,
         {'apiKey': ApiConstants.apiKey,
@@ -21,7 +21,7 @@ class ApiManager {
     }
   }
 
-  Future<NewsResponse?> getNewsBySourceId(String sourceId) async {
+  static Future<NewsResponse?> getNewsBySourceId(String sourceId) async {
     Uri url = Uri.https(ApiConstants.serverName, EndPoints.newsApi, {
       'apiKey': ApiConstants.apiKey,
       // we need the query parameter 'sources' As we need to show the news which belong to specific source

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/di/di.dart';
 import 'package:news_app/models/SourceResponse.dart';
 import 'package:news_app/ui/home/category/cubit/category_details_view_model.dart';
-import 'package:news_app/ui/home/category/cubit/sources_states.dart';
 import 'package:news_app/ui/home/category/source_name_tap.dart';
-import 'package:news_app/ui/home/news/cubit/news_states.dart';
 import 'package:news_app/ui/home/news/news_widget.dart';
 import 'package:news_app/utils/app_colors.dart';
 
@@ -22,7 +19,7 @@ class _SourceTapWidgetState extends State<SourceTapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    CategoryDetailsViewModel viewModel = CategoryDetailsViewModel(sourceRepository: injectSourceRepository());
+    CategoryDetailsViewModel viewModel = CategoryDetailsViewModel();
 
     return BlocProvider(
       create: (context) => viewModel,
