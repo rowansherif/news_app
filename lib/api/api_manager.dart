@@ -1,11 +1,24 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 import 'package:news_app/api/api_constants.dart';
 import 'package:news_app/api/end_points.dart';
 import 'package:news_app/models/NewsResponse.dart';
 import 'package:news_app/models/SourceResponse.dart';
 
+@singleton
 class ApiManager {
+  //TODO: singleton design pattern => when there are more than one class need an object from a specific class we create on object and use it instead of create new object each time
+  //TODO: private constructor
+  // ApiManager._();
+  //
+  // static ApiManager? _instance;
+  //
+  // static ApiManager getInstance(){
+  //   _instance ??= ApiManager._();
+  //   return _instance!;
+  // }
+
   Future<SourceResponse?> getSources(String categoryId) async {
     //The code put in try catch because I might have no response if problem happened to me (like: no internet connection)
     Uri url = Uri.https(ApiConstants.serverName, EndPoints.sourcesApi,

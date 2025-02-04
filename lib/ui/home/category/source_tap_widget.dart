@@ -19,35 +19,34 @@ class SourceTapWidget extends StatefulWidget {
 }
 
 class _SourceTapWidgetState extends State<SourceTapWidget> {
-
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    CategoryDetailsViewModel viewModel = CategoryDetailsViewModel(sourceRepository: injectSourceRepository());
 
-    return BlocProvider(
-      create: (context) => viewModel,
-      child: DefaultTabController(
-        length: widget.sourcesList.length,
-        child: Column(
-          children: [
-            TabBar(
-                onTap: (index) {
-                  viewModel.changeSelectedIndex(index);
-                },
-                isScrollable: true,
-                tabAlignment: TabAlignment.start,
-                dividerColor: AppColors.transparentColor,
-                tabs: widget.sourcesList.map((source) {
-                  return SourceNameTap(
-                      source: source,
-                      isSelected: viewModel.selectedIndex ==
-                          widget.sourcesList.indexOf(source));
-                }).toList()),
+    return DefaultTabController(
+      length: widget.sourcesList.length,
+      child: Column(
+        children: [
+          TabBar(
+              onTap: (index) {
+                selectedIndex = index;
+                setState(() {
 
-            Expanded(
-                child: NewsWidget(source: widget.sourcesList[viewModel.selectedIndex]))
-          ],
-        ),
+                });
+              },
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              dividerColor: AppColors.transparentColor,
+              tabs: widget.sourcesList.map((source) {
+                return SourceNameTap(
+                    source: source,
+                    isSelected:selectedIndex ==
+                        widget.sourcesList.indexOf(source));
+              }).toList()),
+
+          Expanded(
+              child: NewsWidget(source: widget.sourcesList[selectedIndex]))
+        ],
       ),
     );
   }
